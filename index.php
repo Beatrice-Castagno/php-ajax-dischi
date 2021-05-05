@@ -1,5 +1,5 @@
 <?php include __DIR__. '/template/header.php'; ?>
-<?php include __DIR__. '/database.php'; ?>
+<!-- <?php include __DIR__. '/database.php'; ?> -->
     <div id="root">
         <div class="container">
          <!-- intestazione -->
@@ -11,16 +11,18 @@
             <main class="flex">
                 <section class="lista-dischi" v-show="dischi.length > 0">
                     <ul class="flex">
-                        <li v-for="canzone in dischi">
-                            <div class="card flex">
-                                <div class="cover">
-                                    <img v-bind:src="canzone.poster">
+                        <?php foreach($albums as $album) { ?>
+                            <li>
+                                <div class="card flex">
+                                    <div class="cover">
+                                        <img src="<?php echo $album['poster'];?>">
+                                    </div>
+                                    <p class="titolo-disco"> <small><?php echo $album['title'];?></small></p>
+                                    <p class="autore-disco"> <small><?php echo $album['author'];?></small></p>
+                                    <p class="anno-disco"> <small><?php echo $album['year'];?></small></p>
                                 </div>
-                                <p class="titolo-disco"> <small>{{canzone.title}}</small></p>
-                                <p class="autore-disco"> <small>{{canzone.author}}</small></p>
-                                <p class="anno-disco"> <small>{{canzone.year}}</small></p>
-                            </div>
-                        </li>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </section>
             </main>
